@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+  http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="application.properties"/>
+
+    <bean id = "myPerson"
+          class="org.example.employee.Person">
+        <property name="personName" value="${person.personName}"/>
+        <property name="age" value="${person.age}"/>
+        <property name="animal" value="${person.animal}"/>
+
+        <property name="horse" ref="horseId"/>
+    </bean>
+
+    <bean id="myPerson2" class="org.example.employee.Person">
+        <property name="personName" value="${person2.personName}"/>
+        <property name="age" value="${person2.age}"/>
+        <property name="animal" value="${person2.animal}"/>
+
+        <property name="dog" ref="dogId"/>
+    </bean>
+
+    <bean id="myPerson3" class="org.example.employee.Person">
+        <property name="personName" value="${person3.personName}"/>
+        <property name="age" value="${person3.age}"/>
+        <property name="animal" value="${person3.animal}"/>
+
+        <property name="cow" ref="cowId"/>
+    </bean>
+
+    <bean id = "horseId" class="org.example.model.Horse">
+        <constructor-arg index="0" value="${horse.name}"/>
+        <constructor-arg index="1" value="${horse.breed}"/>
+        <constructor-arg index="2" value="${horse.age}"/>
+    </bean>
+
+    <bean id="cowId" class="org.example.model.Cow">
+        <constructor-arg index="0" value="${cow.name}"/>
+        <constructor-arg index="1" value="${cow.breed}"/>
+        <constructor-arg index="2" value="${cow.age}"/>
+    </bean>
+
+    <bean id="dogId" class="org.example.model.Dog">
+        <constructor-arg index="0" value="${dog.name}"/>
+        <constructor-arg index="1" value="${dog.breed}"/>
+        <constructor-arg index="2" value="${dog.age}"/>
+    </bean>
+
+</beans>
